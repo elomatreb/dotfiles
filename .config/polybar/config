@@ -1,0 +1,200 @@
+[colors]
+background = #0a0a0a
+background-alt = #f2000000
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+accent = #ca16A04F
+underline = #da000000
+
+[bar/primary]
+monitor = DVI-D-0
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+fixed-center = false
+
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-top-size = 4
+border-bottom-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Fantasque Sans Mono:size=10;0
+font-1 = Fantasque Sans Mono:size=8.5;0
+
+modules-left = i3
+modules-center =
+modules-right = cpu memory pavolume eth date
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = ${colors.background}
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+[bar/secondary]
+inherit = bar/primary
+monitor = DVI-I-0
+tray-position =
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %mountpoint%: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.accent}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-foreground = ${colors.foreground-alt}
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = 2
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU "
+format-prefix-font = 1
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = ${colors.underline}
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "RAM "
+format-prefix-foreground = ${colors.foreground-alt}
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = net1
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+
+format-connected = <label-connected>
+format-connected-prefix = "LAN "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+format-disconnected = <label-disconnected>
+
+label-connected = %local_ip%
+
+label-disconnected = "%ifname% disconnected"
+label-disconnected-foreground = ${colors.alert}
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%-d.%-m."
+date-alt = "%A, %-d.%-m.%Y"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+label = " %date% %time% "
+
+[module/pavolume]
+type = custom/script
+interval = 0.5
+format-prefix = "VOL "
+format-prefix-foreground = ${colors.foreground-alt}
+label = %output%
+exec = ~/.config/polybar/pavolume.sh
+click-left = exec pavucontrol
+scroll-up = volumeadj up
+scroll-down = volumeadj down
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+compositing-border = over
+
+[global/wm]
+;margin-top = 5
+;margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
