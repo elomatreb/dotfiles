@@ -1,0 +1,47 @@
+#!/usr/bin/fish
+
+# Where screenshots will end up (must end with /)
+set -l screenshot_dir 	~/Pictures/Screenshots/
+
+# The name of the new file
+set -l filename		(date +"%F %H-%M-%S").png
+
+# Where pictures will be uploaded to
+set -l upload_url	"https://pix3ls.bertr.am/upload.php"
+
+# Username, password
+set -l username		"elomatreb"
+set -l password		"somepassword"
+
+########################################################################
+
+if test ! -d $screenshot_dir
+	echo "Screenshot directory does not exist: $screenshot_dir" 1>&2
+	exit 1
+end
+
+if test "$argv[1]" = "--activewindow"
+	maim -i (xdotool getactivewindow) "$screenshot_dir$filename"
+else
+	maim -s "$screenshot_dir$filename"
+end
+
+if test $status -ne 0
+	notify-send "Screenshot cancelled"
+	exit 1
+end
+
+# Upload
+set -l curlout (curl -s -f -F username=$username -F password=$password -F image="@$screenshot_dir$filename" $upload_url)
+
+if test $status -eq 0
+	# Upload succeeded
+	set -l url (echo $curlout | awk '{printf $2}')
+	echo -n $url | xsel -bi
+	notify-send --icon=/usr/share/icons/Arc/actions/24/document-new.png "<b>Screenshot uploaded</b>" "<i>URL copied to clipboard</i><br>$url"
+	rm "$screenshot_dir$filename"
+else
+	# Upload failed
+	notify-send "Screenshot upload failed"
+	exit 1
+end

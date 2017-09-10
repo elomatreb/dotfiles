@@ -1,0 +1,12 @@
+#!/usr/bin/fish
+
+set -l increments "5%"
+
+if test "$argv[1]" = "up"
+	pactl set-sink-volume 1 "+$increments"
+else if test "$argv[1]" = "down"
+	pactl set-sink-volume 1 "-$increments"
+else
+	echo "Invalid operation '$argv[1]' (use 'up' or 'down')" >&2
+	exit 1
+end
