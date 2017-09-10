@@ -1,0 +1,6 @@
+*.sublime-project
+*.sublime-workspace
+
+.vscode/
+
+.byebug_history
