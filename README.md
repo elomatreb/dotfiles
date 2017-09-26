@@ -9,7 +9,7 @@ Some are adapted from the Manjaro i3 community edition defaults
 AUR:
 
 ```
-chruby firefox-dev google-chrome-dev polybar-git ruby-install tor-browser ttf-fantasque-sans ttf-mononoki-git visual-studio-code xcursor-openzone
+chruby firefox-nightly google-chrome-dev polybar-git ruby-install tor-browser ttf-fantasque-sans ttf-mononoki-git visual-studio-code xcursor-openzone
 ```
 
 Misc:
