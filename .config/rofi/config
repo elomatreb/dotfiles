@@ -1,0 +1,9 @@
+rofi.font:		Fantasque Sans Mono 13
+rofi.separator-style:	none
+rofi.bw:		2
+rofi.width:		35
+rofi.lines:		7
+rofi.hide-scrollbar:	true
+rofi.color-window:	#f50a0a0a,#007d34
+rofi.color-normal:	#00000000,#555555,#00000000,#00000000,#dfdfdf
+rofi.color-active:	#00000000,#d18b08,#00000000,#00000000,#dfdfdf

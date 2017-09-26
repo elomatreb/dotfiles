@@ -35,7 +35,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
+bindsym $mod+d exec --no-startup-id "rofi -show run"
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -298,7 +298,7 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id xautolock -time 25 -locker blurlock
 exec_always --no-startup-id fix_xcursor
 
-exec --no-startup-id "systemctl --user start polybar_primary polybar_secondary"
+exec --no-startup-id "systemctl --user start set_wallpapers.service polybar_primary.service polybar_secondary.service"
 
 # Theme colors
 # class                 border  backgr. text    indic.  child_border
