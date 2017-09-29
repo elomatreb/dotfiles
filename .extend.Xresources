@@ -27,6 +27,7 @@ Xcursor.size:                     0
 URxvt.depth:                      32
 URxvt.background:                 [98]#000000
 URxvt.font:                       xft:Fantasque Sans Mono:size=12,xft:Symbola:size=12
+URxvt.internalBorder:             0
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
@@ -36,6 +37,7 @@ URxvt*saveLines:                  5000
 URxvt*cursorColor:                #60ac39
 URxvt*lineSpace:                  4
 URxvt*urgentOnBell:               true
+
 
 ! Clickable URLS
 URxvt.perl-ext-common:            default,matcher

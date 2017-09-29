@@ -15,3 +15,8 @@ chruby firefox-nightly google-chrome-dev polybar-git ruby-install tor-browser tt
 Misc:
 
  - https://github.com/JeanMertz/chruby-fish
+
+WeeChat scripts:
+
+ - `colorize_nicks.py`
+ - https://github.com/s3rvac/weechat-notify-send
