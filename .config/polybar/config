@@ -1,21 +1,18 @@
 [colors]
-background = #0a0a0a
+background = #ed000000
 background-alt = #f2000000
-;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
-accent = #ca16A04F
+accent = #ff16A04F
 underline = #da000000
 
 [bar/primary]
 monitor = DVI-D-0
 width = 100%
 height = 27
-;offset-x = 1%
-;offset-y = 1%
 radius = 0
 fixed-center = false
 
@@ -40,12 +37,12 @@ module-margin-right = 2
 font-0 = Fantasque Sans Mono:size=10;0
 font-1 = Fantasque Sans Mono:size=8.5;0
 
-modules-left = i3
+modules-left = i3 xwindow
 modules-center =
 modules-right = cpu memory pavolume eth date
 
 tray-position = right
-tray-padding = 2
+tray-padding = 3
 ;tray-transparent = true
 ;tray-background = ${colors.background}
 
@@ -64,6 +61,7 @@ tray-padding = 2
 inherit = bar/primary
 monitor = DVI-I-0
 tray-position =
+modules-left = i3
 
 [module/filesystem]
 type = internal/fs
@@ -167,8 +165,8 @@ label-disconnected-foreground = ${colors.alert}
 type = internal/date
 interval = 1
 
-date = "%-d.%-m."
-date-alt = "%A, %-d.%-m.%Y"
+date = "%d.%m."
+date-alt = "%A, %d.%m.%Y"
 
 time = %H:%M
 time-alt = %H:%M:%S
@@ -185,6 +183,13 @@ exec = ~/.config/polybar/pavolume.sh
 click-left = exec pavucontrol
 scroll-up = volumeadj up
 scroll-down = volumeadj down
+
+[module/xwindow]
+type = internal/xwindow
+format-foreground = ${colors.foreground-alt}
+label = %title%
+label-maxlen = 100
+
 
 [settings]
 screenchange-reload = true
