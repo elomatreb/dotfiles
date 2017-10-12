@@ -1,0 +1,10 @@
+[Unit]
+Description=Polybar status bar '%I'
+After=pulseaudio.service
+After=mopidy.service
+
+[Service]
+ExecStart=/usr/bin/polybar %i
+
+[Install]
+WantedBy=window-manager.target

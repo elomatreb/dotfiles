@@ -1,0 +1,12 @@
+[Unit]
+Description=Mopidy music server
+After=avahi-daemon.service
+After=dbus.service
+After=pulseaudio.service
+After=sound.target
+
+[Service]
+ExecStart=/usr/bin/mopidy
+
+[Install]
+WantedBy=window-manager.target

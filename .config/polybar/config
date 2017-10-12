@@ -35,11 +35,11 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = Fantasque Sans Mono:size=10;0
-font-1 = Fantasque Sans Mono:size=8.5;0
+font-1 = Symbola:size=9;0
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = cpu memory pavolume eth date
+modules-right = mpd pavolume eth date
 
 tray-position = right
 tray-padding = 3
@@ -62,16 +62,6 @@ inherit = bar/primary
 monitor = DVI-I-0
 tray-position =
 modules-left = i3
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %mountpoint%: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/i3]
 type = internal/i3
@@ -117,12 +107,27 @@ format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = ${colors.underline}
 label = %percentage%%
 
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = "RAM "
-format-prefix-foreground = ${colors.foreground-alt}
-label = %percentage_used%%
+[module/mpd]
+type = internal/mpd
+host = ::
+port = 6600
+
+format-online = <label-song>
+format-offline = <label-offline>
+
+; TODO: Make rightclicking open a client
+format-playing = "%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.pause:}<label-song>%{A}"
+format-playing-prefix = "⏵ "
+format-playing-prefix-foreground = ${colors.foreground-alt}
+
+format-paused = "%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.resume:}<label-song>%{A}"
+format-paused-prefix = "⏸ "
+format-paused-prefix-foreground = ${colors.foreground-alt}
+
+label-offline = mpd offline
+label-offline-foreground = ${colors.foreground-alt}
+
+label-song = %artist% %{F#555}-%{F-} %title%
 
 [module/wlan]
 type = internal/network
@@ -151,8 +156,8 @@ type = internal/network
 interface = enp3s0
 interval = 3.0
 
-format-connected = <label-connected>
-format-connected-prefix = "LAN "
+format-connected = "%{A1:nm-connection-editor:}<label-connected>%{A}"
+format-connected-prefix = "🖧 "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 format-disconnected = <label-disconnected>
 
@@ -176,20 +181,19 @@ label = " %date% %time% "
 [module/pavolume]
 type = custom/script
 interval = 0.5
-format-prefix = "VOL "
+format-prefix = "🔉 "
 format-prefix-foreground = ${colors.foreground-alt}
 label = %output%
 exec = ~/.config/polybar/pavolume.sh
 click-left = exec pavucontrol
-scroll-up = volumeadj up
-scroll-down = volumeadj down
+scroll-up = ~/.bin/volumeadj up
+scroll-down = ~/.bin/volumeadj down
 
 [module/xwindow]
 type = internal/xwindow
 format-foreground = ${colors.foreground-alt}
 label = %title%
 label-maxlen = 100
-
 
 [settings]
 screenchange-reload = true
