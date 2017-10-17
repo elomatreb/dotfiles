@@ -1,0 +1,39 @@
+mpd_host = ::
+mpd_port = 6600
+
+# Center currently playing track
+autocenter_mode = yes
+centered_cursor = yes
+
+# Show status messages and highlight for 2 seconds
+message_delay_time = 2
+playlist_disable_highlight_delay = 2
+
+# Nicer progressbar
+progressbar_look = "━━─"
+progressbar_color = 238
+progressbar_elapsed_color = green
+
+# Hide column headers
+titles_visibility = no
+
+# Don't scroll header (Playlist: ...), annoying movement
+header_text_scrolling = no
+
+# Show secondary elements in matching greys
+state_line_color = 238
+header_window_color = 9
+statusbar_time_color = 9
+
+# Song status ("Playing: ..."), only show "Artist - Title", "Title", or filename
+song_status_format = {{%a - }{%t}}|{%f}
+
+# Playlist format:
+song_columns_list_format = "(2f)[white]{}(75)[white]{t}(1)[blue]{ar}(1f)[]{}"
+
+# Show currently played item in bold, with a green > in front (and indented)
+now_playing_prefix = "$3$b>"
+
+# Show selected (cursor) item in bold and with a black background
+current_item_prefix = "$b$(white_black)"
+current_item_suffix = "$/b$(white_transparent)"
