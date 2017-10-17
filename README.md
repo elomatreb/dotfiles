@@ -31,3 +31,15 @@ WeeChat scripts:
 
  - `colorize_nicks.py`
  - https://github.com/s3rvac/weechat-notify-send
+
+## Screenshots
+
+Wallpapers are from [simonstalenhag.se](http://simonstalenhag.se/).
+
+screenfetch/clean:
+
+![clean desktop screenshot with screenfetch](screenshots/1.jpg?raw=true)
+
+with windows (weechat and ncmpcpp):
+
+![desktop screenshots with some windows](screenshots/2.jpg?raw=true)
