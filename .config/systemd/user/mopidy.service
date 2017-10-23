@@ -6,7 +6,9 @@ After=pulseaudio.service
 After=sound.target
 
 [Service]
-ExecStart=/usr/bin/mopidy
+ExecStart=/usr/bin/python2 /usr/bin/mopidy
+ExecStop=/home/elomatreb/.bin/mopidy-cli core.playback.pause
+ExecStop=/usr/bin/kill $MAINPID
 
 [Install]
 WantedBy=window-manager.target

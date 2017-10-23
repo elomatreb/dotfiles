@@ -32,6 +32,12 @@ WeeChat scripts:
  - `colorize_nicks.py`
  - https://github.com/s3rvac/weechat-notify-send
 
+Mopidy stuff:
+
+```
+pip2 install --user mopidy-local-sqlite
+```
+
 ## Screenshots
 
 Wallpapers are from [simonstalenhag.se](http://simonstalenhag.se/).
