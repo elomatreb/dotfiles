@@ -36,6 +36,7 @@ module-margin-right = 2
 
 font-0 = Fantasque Sans Mono:size=10;0
 font-1 = Symbola:size=9;0
+font-2 = DejaVu Sans:size=10;0
 
 modules-left = i3 xwindow
 modules-center =
@@ -115,14 +116,17 @@ port = 6600
 format-online = <label-song>
 format-offline = <label-offline>
 
-; TODO: Make rightclicking open a client
-format-playing = "%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.pause:}<label-song>%{A}"
-format-playing-prefix = "⏵ "
+format-playing = "<label-song>"
+format-playing-prefix = "%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.previous :}⏮ %{A}%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.pause:}⏵ "
 format-playing-prefix-foreground = ${colors.foreground-alt}
+format-playing-suffix = "%{A} %{A1:/home/elomatreb/.bin/mopidy-cli core.playback.next :}⏭%{A}"
+format-playing-suffix-foreground = ${colors.foreground-alt}
 
-format-paused = "%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.resume:}<label-song>%{A}"
-format-paused-prefix = "⏸ "
+format-paused = "<label-song>"
+format-paused-prefix = "%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.previous :}⏮ %{A}%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.resume:}⏸ "
 format-paused-prefix-foreground = ${colors.foreground-alt}
+format-paused-suffix = "%{A} %{A1:/home/elomatreb/.bin/mopidy-cli core.playback.next :}⏭%{A}"
+format-paused-suffix-foreground = ${colors.foreground-alt}
 
 label-offline = mpd offline
 label-offline-foreground = ${colors.foreground-alt}
