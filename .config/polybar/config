@@ -117,15 +117,15 @@ format-online = <label-song>
 format-offline = <label-offline>
 
 format-playing = "<label-song>"
-format-playing-prefix = "%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.previous :}⏮ %{A}%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.pause:}⏵ "
+format-playing-prefix = "%{A1:/home/elomatreb/.bin/mopidy-cli previous:}⏮ %{A}%{A1:/home/elomatreb/.bin/mopidy-cli pause:}⏵ "
 format-playing-prefix-foreground = ${colors.foreground-alt}
-format-playing-suffix = "%{A} %{A1:/home/elomatreb/.bin/mopidy-cli core.playback.next :}⏭%{A}"
+format-playing-suffix = "%{A} %{A1:/home/elomatreb/.bin/mopidy-cli next:}⏭%{A}"
 format-playing-suffix-foreground = ${colors.foreground-alt}
 
 format-paused = "<label-song>"
-format-paused-prefix = "%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.previous :}⏮ %{A}%{A1:/home/elomatreb/.bin/mopidy-cli core.playback.resume:}⏸ "
+format-paused-prefix = "%{A1:/home/elomatreb/.bin/mopidy-cli previous:}⏮ %{A}%{A1:/home/elomatreb/.bin/mopidy-cli resume:}⏸ "
 format-paused-prefix-foreground = ${colors.foreground-alt}
-format-paused-suffix = "%{A} %{A1:/home/elomatreb/.bin/mopidy-cli core.playback.next :}⏭%{A}"
+format-paused-suffix = "%{A} %{A1:/home/elomatreb/.bin/mopidy-cli next:}⏭%{A}"
 format-paused-suffix-foreground = ${colors.foreground-alt}
 
 label-offline = mpd offline
