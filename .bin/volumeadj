@@ -1,15 +1,21 @@
-#!/usr/bin/fish
+#!/bin/bash
 
-set -l increments "5%"
+increments="5%"
 
 # Get default sink name
-set -l sink (pactl info | grep -i "default sink" | cut -d ' ' -f 3)
+sink=$(pactl info | grep -i "default sink" | cut -d ' ' -f 3)
 
-if test "$argv[1]" = "up"
-	pactl set-sink-volume $sink "+$increments"
-else if test "$argv[1]" = "down"
-	pactl set-sink-volume $sink "-$increments"
-else
-	echo "Invalid operation '$argv[1]' (use 'up' or 'down')" >&2
-	exit 1
-end
+case "$1" in
+	up)
+		pactl set-sink-volume $sink "+$increments"
+		;;
+	down)
+		pactl set-sink-volume $sink "-$increments"
+		;;
+	mute)
+		pactl set-sink-mute $sink toggle
+		;;
+	*)
+		echo "Usage: $0 {up|down|mute}" 1>&2
+		exit 1
+esac
