@@ -1,3 +1,0 @@
-#!/bin/bash
-
-python2 /usr/bin/mopidy local scan && systemctl --user restart mopidy
