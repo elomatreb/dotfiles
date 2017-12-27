@@ -2,10 +2,13 @@
 
 set -l increments "5%"
 
+# Get default sink name
+set -l sink (pactl info | grep -i "default sink" | cut -d ' ' -f 3)
+
 if test "$argv[1]" = "up"
-	pactl set-sink-volume 1 "+$increments"
+	pactl set-sink-volume $sink "+$increments"
 else if test "$argv[1]" = "down"
-	pactl set-sink-volume 1 "-$increments"
+	pactl set-sink-volume $sink "-$increments"
 else
 	echo "Invalid operation '$argv[1]' (use 'up' or 'down')" >&2
 	exit 1
