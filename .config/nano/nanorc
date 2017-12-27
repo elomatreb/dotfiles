@@ -1,0 +1,5 @@
+set nowrap
+set linenumbers
+set smooth
+set morespace
+set numbercolor black
