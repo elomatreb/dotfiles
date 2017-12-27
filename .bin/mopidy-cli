@@ -7,8 +7,11 @@ import sys
 MOPIDY_ADDRESS = "http://localhost:6680/mopidy/rpc"
 
 def do_rpc(method):
-    r = requests.post(MOPIDY_ADDRESS, data = '{"jsonrpc": "2.0", "id": 1, "method": "%s"}' % method)
-    return json.loads(r.text)
+    try:
+        r = requests.post(MOPIDY_ADDRESS, data = '{"jsonrpc": "2.0", "id": 1, "method": "%s"}' % method)
+        return json.loads(r.text)
+    except:
+        sys.stderr.write("no mopidy lol\n")
 
 def pause():
     do_rpc("core.playback.pause")
