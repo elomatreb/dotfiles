@@ -15,17 +15,12 @@ ttf-symbola rofi weechat mopidy ncmpcpp fish redshift keepassxc noto-fonts noto-
 AUR:
 
 ```
-chruby firefox-nightly google-chrome-dev polybar-git ruby-install tor-browser ttf-fantasque-sans ttf-mononoki-git visual-studio-code xcursor-openzone dropbox
+chruby dropbox firefox-always-nightly google-chrome-dev i3-gaps i3lock-color nano-syntax-highlighting-git polybar-git ruby-install tor-browser ttf-fantasque-sans-mono ttf-mononoki-git visual-studio-code-bin xcursor-openzone
 ```
 
 Misc:
 
  - https://github.com/JeanMertz/chruby-fish
-
-Setup:
-
- - Enable services: `systemctl --user enable polybar@primary.service polybar@secondary.service set_wallpapers.service mopidy.service redshift.service dropbox.service`
- - Scan mopidy library: `mopidy local scan`
 
 WeeChat scripts:
 
@@ -35,7 +30,7 @@ WeeChat scripts:
 Mopidy stuff:
 
 ```
-pip2 install --user mopidy-local-sqlite
+pip2 install --user Mopidy-local-SQLite Mopidy-Local-Images
 ```
 
 ## Screenshots
