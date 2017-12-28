@@ -4,9 +4,6 @@
 
 set -e
 
-# Fancy options for i3lock-color
-i3lock_options='--statusfont=Fantasque Sans Mono --insidecolor=00000066 --line-uses-inside --ringcolor=00000088 --keyhlcolor=16a04f88 --separatorcolor=00000000 --ringwrongcolor=bd2c40ff --insidewrongcolor=bd2c4066 --ringvercolor=0e407bff --insidevercolor=0e407b66 --textcolor=ffffffaa --veriftext=... --wrongtext=nope'
-
 case "$1" in
 	lock)
 		sc=$(mktemp -u).png
@@ -14,7 +11,7 @@ case "$1" in
 		maim $sc
 		# Pixelate screenshot
 		convert $sc -scale 10% -scale 1000% $sc
-		i3lock -i $sc --statusfont="Fantasque Sans Mono" --insidecolor=00000066 --line-uses-inside --ringcolor=00000088 --keyhlcolor=16a04f88 --separatorcolor=00000000 --ringwrongcolor=bd2c40ff --insidewrongcolor=bd2c4066 --ringvercolor=0e407bff --insidevercolor=0e407b66 --textcolor=ffffffaa --veriftext=... --wrongtext=nope --radius 120 --bshlcolor=bd2c40ff
+		i3lock -i $sc -e --statusfont="Fantasque Sans Mono" --insidecolor=00000066 --line-uses-inside --ringcolor=00000088 --keyhlcolor=16a04f88 --separatorcolor=00000000 --ringwrongcolor=bd2c40ff --insidewrongcolor=bd2c4066 --ringvercolor=0e407bff --insidevercolor=0e407b66 --textcolor=ffffffaa --veriftext=... --wrongtext=nope --radius 120 --bshlcolor=bd2c40ff
 		rm $sc
 		;;
 	suspend)
