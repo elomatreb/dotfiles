@@ -37,17 +37,14 @@ bindsym $mod+Shift+q kill
 # start program launcher
 bindsym $mod+d exec --no-startup-id "rofi -show drun"
 
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
-
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
 #exec --no-startup-id volumeicon
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-exec --no-startup-id pulseaudio
-exec --no-startup-id pa-applet
+#exec --no-startup-id pulseaudio
+#exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
@@ -61,8 +58,6 @@ bindsym $mod+F2 exec --no-startup-id "~/.bin/browser"
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec audacious
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
@@ -73,6 +68,9 @@ bindsym $mod+Shift+p exec --no-startup-id "/home/elomatreb/.bin/screenshot --act
 # Control pulseaudio volume in 5% increments
 bindsym $mod+KP_Add exec --no-startup-id "/home/elomatreb/.bin/volumeadj up"
 bindsym $mod+KP_Subtract exec --no-startup-id "/home/elomatreb/.bin/volumeadj down"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "/home/elomatreb/.bin/volumeadj up"
+bindsym XF86AudioLowerVolume exec --no-startup-id "/home/elomatreb/.bin/volumeadj down"
+bindsym XF86AudioMute exec --no-startup-id "/home/elomatreb/.bin/volumeadj mute"
 
 # Mopidy shortcuts
 bindsym $mod+Mod1+space exec --no-startup-id "/home/elomatreb/.bin/mopidy-cli toggle_play_pause"
@@ -145,8 +143,6 @@ bindsym $mod+minus scratchpad show
 #navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
-
-workspace 8 output DVI-I-0
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
@@ -250,15 +246,14 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+set $mode_system (l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id /home/elomatreb/.bin/pm lock, mode "default"
+    bindsym s exec --no-startup-id /home/elomatreb/.bin/pm suspend, mode "default"
+    bindsym e exec --no-startup-id /home/elomatreb/.bin/pm logout, mode "default"
+    bindsym h exec --no-startup-id /home/elomatreb/.bin/pm hibernate, mode "default"
+    bindsym r exec --no-startup-id /home/elomatreb/.bin/pm reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id /home/elomatreb/.bin/pm shutdown, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -290,16 +285,7 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
-
-# Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id compton -b
-# exec --no-startup-id gajim
-exec --no-startup-id nm-applet
-# exec --no-startup-id pamac-tray
-exec --no-startup-id xautolock -time 25 -locker blurlock
-exec_always --no-startup-id fix_xcursor
+bindsym $mod+9 exec --no-startup-id /home/elomatreb/.bin/pm lock
 
 # Start system services
 exec --no-startup-id "systemctl --user start window-manager.target"
@@ -335,7 +321,7 @@ gaps outer -2
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
+#smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
