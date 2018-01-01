@@ -11,11 +11,11 @@ Xft.lcdfilter: lcddefault
 ! Adapted from Solarized
 *color0:  #002b36
 *color1:  #dc322f
-*color2:  #859900
-*color3:  #b58900
-*color4:  #268bd2
-*color5:  #6c71c4
-*color6:  #2aa198
+*color2:  #547000
+*color3:  #99820e
+*color4:  #10629c
+*color5:  #383d94
+*color6:  #0a736b
 *color7:  #93a1a1
 *color8:  #657b83
 *color9:  #dc322f
@@ -42,6 +42,7 @@ URxvt*saveLines:                  5000
 URxvt*cursorColor:                #60ac39
 URxvt*lineSpace:                  4
 URxvt*urgentOnBell:               true
+URxvt*intensityStyles:            true
 
 
 ! Clickable URLS
