@@ -1,23 +1,19 @@
 [user]
-	name = "Ole B."
-	email = git@bertr.am
-	signingkey = 1E6FEA5D77151D09A2A26E54E1B751CB4B7F8D28
+name = "Ole Bertram"
+email = git@bertr.am
+signingkey = 1E6FEA5D77151D09A2A26E54E1B751CB4B7F8D28
 [core]
-	editor = nano
-	excludesfile = ~/.gitignore_global
+editor = nano
+excludesfile = ~/.gitignore_global
 [color]
-	ui = true
+ui = true
 [format]
-	pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cred%G? %C(bold blue)<%an>%Creset
+pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cred%G? %C(bold blue)<%an>%Creset
 [alias]
-	st = status
-	lg = log --graph -n 20
-	c = commit -m
-	m = merge
-	changed-files = diff-tree --no-commit-id --name-only -r
+st = status
+lg = log --graph -n 20
+c = commit -m
+m = merge
+changed-files = diff-tree --no-commit-id --name-only -r
 [github]
-	user = elomatreb
-[push]
-	default = simple
-[diff]
-	compactionHeuristic = true
+user = elomatreb
