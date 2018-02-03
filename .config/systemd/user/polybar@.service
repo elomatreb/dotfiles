@@ -4,9 +4,10 @@ After=pulseaudio.service
 After=mopidy.service
 
 [Service]
-Environment="MONITOR_PRIMARY=DVI-D-0"
-Environment="MONITOR_SECONDARY=DVI-I-0"
-Environment="INTERFACE_ETH=enp3s0"
+#Environment="MONITOR_PRIMARY="
+#Environment="MONITOR_SECONDARY="
+#Environment="INTERFACE_ETH="
+#Environment="INTERFACE=WLAN="
 ExecStart=/usr/bin/polybar %i
 Restart=on-failure
 
