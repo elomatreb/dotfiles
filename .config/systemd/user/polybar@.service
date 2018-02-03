@@ -4,7 +4,11 @@ After=pulseaudio.service
 After=mopidy.service
 
 [Service]
+Environment="MONITOR_PRIMARY=DVI-D-0"
+Environment="MONITOR_SECONDARY=DVI-I-0"
+Environment="INTERFACE_ETH=enp3s0"
 ExecStart=/usr/bin/polybar %i
+Restart=on-failure
 
 [Install]
 WantedBy=window-manager.target
