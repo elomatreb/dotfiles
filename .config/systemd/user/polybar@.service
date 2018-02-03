@@ -7,7 +7,7 @@ After=mopidy.service
 #Environment="MONITOR_PRIMARY="
 #Environment="MONITOR_SECONDARY="
 #Environment="INTERFACE_ETH="
-#Environment="INTERFACE=WLAN="
+#Environment="INTERFACE_WLAN="
 ExecStart=/usr/bin/polybar %i
 Restart=on-failure
 
