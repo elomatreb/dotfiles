@@ -10,13 +10,14 @@ accent = #ff16A04F
 underline = #da000000
 
 [bar/primary]
-monitor = DVI-D-0
+monitor = ${env:MONITOR_PRIMARY}
+
 width = 100%
 height = 27
 radius = 0
 fixed-center = false
 
-bottom = true
+bottom = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -24,8 +25,8 @@ foreground = ${colors.foreground}
 line-size = 2
 line-color = #f00
 
-border-top-size = 4
-border-bottom-size = 4
+border-top-size = 0
+border-bottom-size = 0
 border-color = #00000000
 
 padding-left = 0
@@ -40,12 +41,12 @@ font-2 = DejaVu Sans:size=10;0
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = mpd pavolume eth date
+modules-right = pulseaudio filesystem wlan eth battery date
 
 tray-position = right
 tray-padding = 3
 ;tray-transparent = true
-;tray-background = ${colors.background}
+tray-background = ${colors.background}
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -60,9 +61,9 @@ tray-padding = 3
 
 [bar/secondary]
 inherit = bar/primary
-monitor = DVI-I-0
+monitor = ${env:MONITOR_SECONDARY}
+; Don't show the tray (can only have one globally)
 tray-position =
-modules-left = i3
 
 [module/i3]
 type = internal/i3
@@ -99,18 +100,9 @@ label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = "CPU "
-format-prefix-font = 1
-format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = ${colors.underline}
-label = %percentage%%
-
 [module/mpd]
 type = internal/mpd
-host = ::
+host = 127.0.0.1
 port = 6600
 
 format-online = <label-song>
@@ -128,53 +120,82 @@ format-paused-prefix-foreground = ${colors.foreground-alt}
 format-paused-suffix = "%{A} %{A1:/home/elomatreb/.bin/mopidy-cli next:}⏭%{A}"
 format-paused-suffix-foreground = ${colors.foreground-alt}
 
-label-offline = mpd offline
+label-offline = 🎝
 label-offline-foreground = ${colors.foreground-alt}
 
 label-song = %artist% %{F#555}-%{F-} %title%
 
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-prefix = "🔊 "
+format-volume-prefix-foreground = ${colors.foreground-alt}
+
+format-muted-prefix = "🔇 "
+format-muted-prefix-foreground = ${colors.foreground-alt}
+label-muted-foreground = ${colors.foreground-alt}
+
+[module/filesystem]
+type = internal/fs
+
+mount-0 = /
+
+format-mounted = <label-mounted>
+format-mounted-prefix = "hdd "
+format-mounted-prefix-foreground = ${colors.foreground-alt}
+
+label-mounted = "%free%"
+
 [module/wlan]
 type = internal/network
-interface = net1
+interface = ${env:INTERFACE_WLAN}
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
+format-connected = <label-connected>
+format-connected-prefix = "wlan "
+format-connected-prefix-foreground = ${colors.foreground-alt}
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+label-connected = "%essid% %{F#555}%signal%%%{F-}"
 
 [module/eth]
 type = internal/network
-interface = enp3s0
+interface = ${env:INTERFACE_ETH}
 interval = 3.0
 
 format-connected = "%{A1:nm-connection-editor:}<label-connected>%{A}"
-format-connected-prefix = "🖧 "
+format-connected-prefix = "eth "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-format-disconnected = <label-disconnected>
 
 label-connected = %local_ip%
 
-label-disconnected = "%ifname% disconnected"
-label-disconnected-foreground = ${colors.alert}
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+time-format = %H:%M
+
+format-charging = <label-charging>
+format-charging-prefix = "🔌 "
+format-charging-prefix-foreground = ${colors.foreground-alt}
+
+format-discharging = <label-discharging>
+format-discharging-prefix = "🔋 "
+format-discharging-prefix-foreground = ${colors.foreground-alt}
+
+label-discharging = "%percentage%% %{F#555}(%time%)%{F-}"
+
+format-full = <label-full>
+format-full-foreground = ${colors.accent}
+format-full-prefix = "🔋 "
+format-full-prefix-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
 interval = 1
 
-date = "%d.%m."
+date = "%e.%m."
 date-alt = "%A, %d.%m.%Y"
 
 time = %H:%M
@@ -182,22 +203,11 @@ time-alt = %H:%M:%S
 
 label = " %date% %time% "
 
-[module/pavolume]
-type = custom/script
-interval = 0.5
-format-prefix = "🔉 "
-format-prefix-foreground = ${colors.foreground-alt}
-label = %output%
-exec = ~/.config/polybar/pavolume.sh
-click-left = exec pavucontrol
-scroll-up = ~/.bin/volumeadj up
-scroll-down = ~/.bin/volumeadj down
-
 [module/xwindow]
 type = internal/xwindow
 format-foreground = ${colors.foreground-alt}
 label = %title%
-label-maxlen = 100
+label-maxlen = 75
 
 [settings]
 screenchange-reload = true
