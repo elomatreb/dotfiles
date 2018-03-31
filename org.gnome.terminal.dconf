@@ -1,0 +1,25 @@
+[legacy/keybindings]
+paste='<Primary><Alt>v'
+copy='<Primary><Alt>c'
+
+[legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+foreground-color='rgb(200,200,186)'
+palette=['rgb(35,35,35)', 'rgb(221,68,51)', 'rgb(121,153,54)', 'rgb(230,171,53)', 'rgb(51,97,128)', 'rgb(193,95,217)', 'rgb(85,153,85)', 'rgb(237,237,221)', 'rgb(85,102,119)', 'rgb(255,104,87)', 'rgb(170,203,102)', 'rgb(255,204,102)', 'rgb(102,153,187)', 'rgb(232,138,255)', 'rgb(99,179,99)', 'rgb(255,254,254)']
+cell-width-scale=1.1499999999999999
+bold-is-bright=false
+cursor-background-color='rgb(85,153,85)'
+use-system-font=false
+cursor-colors-set=false
+use-theme-colors=false
+cell-height-scale=1.3500000000000001
+default-show-menubar=true
+cursor-foreground-color='rgb(255,255,255)'
+font='Fantasque Sans Mono 10'
+scrollback-unlimited=true
+text-blink-mode='never'
+background-color='rgb(0,0,0)'
+scrollbar-policy='never'
+
+[legacy]
+schema-version=uint32 3
+default-show-menubar=false
