@@ -35,12 +35,10 @@ pip2 install --user Mopidy-local-SQLite Mopidy-Local-Images
 
 ## Screenshots
 
-Wallpapers are from [simonstalenhag.se](http://simonstalenhag.se/).
-
 screenfetch/clean:
 
-![clean desktop screenshot with screenfetch](screenshots/1.jpg?raw=true)
+![clean desktop screenshot with screenfetch](screenshots/screenfetch.png?raw=true)
 
-with windows (weechat and ncmpcpp):
+busy (media player is MPV):
 
-![desktop screenshots with some windows](screenshots/2.jpg?raw=true)
+![desktop screenshots with some windows](screenshots/busy.png?raw=true)
