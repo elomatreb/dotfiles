@@ -41,7 +41,7 @@ font-2 = DejaVu Sans:size=10;0
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = pulseaudio filesystem wlan eth battery date
+modules-right = mpd pulseaudio filesystem wlan eth battery date
 
 tray-position = right
 tray-padding = 3
@@ -102,28 +102,20 @@ label-urgent-padding = 2
 
 [module/mpd]
 type = internal/mpd
-host = 127.0.0.1
-port = 6600
+host = ${env:MPD_HOST}
 
-format-online = <label-song>
+format-online = %{F#555}<icon-prev> <toggle>%{F-} <label-song> %{F#555}<icon-next>%{F-}
 format-offline = <label-offline>
 
-format-playing = "<label-song>"
-format-playing-prefix = "%{A1:/home/elomatreb/.bin/mopidy-cli previous:}⏮ %{A}%{A1:/home/elomatreb/.bin/mopidy-cli pause:}⏵ "
-format-playing-prefix-foreground = ${colors.foreground-alt}
-format-playing-suffix = "%{A} %{A1:/home/elomatreb/.bin/mopidy-cli next:}⏭%{A}"
-format-playing-suffix-foreground = ${colors.foreground-alt}
+label-song = %artist% %{F#555}-%{F-} %title%
 
-format-paused = "<label-song>"
-format-paused-prefix = "%{A1:/home/elomatreb/.bin/mopidy-cli previous:}⏮ %{A}%{A1:/home/elomatreb/.bin/mopidy-cli resume:}⏸ "
-format-paused-prefix-foreground = ${colors.foreground-alt}
-format-paused-suffix = "%{A} %{A1:/home/elomatreb/.bin/mopidy-cli next:}⏭%{A}"
-format-paused-suffix-foreground = ${colors.foreground-alt}
+icon-play = ⏵
+icon-pause = ⏸
+icon-prev = ⏮
+icon-next = ⏭
 
 label-offline = 🎝
 label-offline-foreground = ${colors.foreground-alt}
-
-label-song = %artist% %{F#555}-%{F-} %title%
 
 [module/pulseaudio]
 type = internal/pulseaudio

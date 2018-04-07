@@ -8,6 +8,7 @@ After=mopidy.service
 #Environment="MONITOR_SECONDARY="
 #Environment="INTERFACE_ETH="
 #Environment="INTERFACE_WLAN="
+#Environment="MPD_HOST=/path/to/mpd/socket"
 ExecStart=/usr/bin/polybar %i
 Restart=on-failure
 

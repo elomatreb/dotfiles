@@ -1,0 +1,3 @@
+#!/usr/bin/fish
+
+mpc -q $argv[1]

@@ -1,5 +1,4 @@
-mpd_host = ::
-mpd_port = 6600
+mpd_host = /run/user/1000/mpd
 
 # Center currently playing track
 autocenter_mode = yes
@@ -26,14 +25,13 @@ header_window_color = 9
 statusbar_time_color = 9
 
 # Song status ("Playing: ...")
-song_status_format = {{%a - {"%b" {(%y) }- }}{%t}}|{%f}
+song_status_format = {{%a - {%b {(%y) }- }}{%t}}|{%f}
 
 # Playlist format:
-song_columns_list_format = "(2f)[white]{}(75)[white]{t}(1)[blue]{ar}(1f)[]{}"
+song_columns_list_format = "(20)[green]{ar} (6f)[9]{lr} (50)[cyan]{t|f:Title} (20)[blue]{bEr}"
 
 # Show currently played item in bold, with a green > in front (and indented)
-now_playing_prefix = "$3$b>"
+now_playing_prefix = "$4$b>$0"
+now_playing_suffix = "$/b"
 
-# Show selected (cursor) item in bold and with a black background
-current_item_prefix = "$b$(white_black)"
-current_item_suffix = "$/b$(white_transparent)"
+playlist_shorten_total_times = yes
