@@ -73,10 +73,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id "/home/elomatreb/.bin/volumead
 bindsym XF86AudioMute exec --no-startup-id "/home/elomatreb/.bin/volumeadj mute"
 bindsym XF86AudioMicMute exec --no-startup-id "/home/elomatreb/.bin/volumeadj micmute"
 
-# Mopidy shortcuts
-bindsym $mod+Mod1+space exec --no-startup-id "/home/elomatreb/.bin/mopidy-cli toggle_play_pause"
-bindsym $mod+Mod1+Left exec --no-startup-id "/home/elomatreb/.bin/mopidy-cli previous"
-bindsym $mod+Mod1+Right exec --no-startup-id "/home/elomatreb/.bin/mopidy-cli next"
+# mpd shortcuts
+bindsym $mod+Mod1+space exec --no-startup-id "/home/elomatreb/.bin/mpd-cli toggle"
+bindsym $mod+Mod1+Left exec --no-startup-id "/home/elomatreb/.bin/mpd-cli prev"
+bindsym $mod+Mod1+Right exec --no-startup-id "/home/elomatreb/.bin/mpd-cli next"
 
 # focus_follows_mouse no
 
