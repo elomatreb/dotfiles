@@ -1,0 +1,10 @@
+[Unit]
+Description=Sets random wallpaper on X display '%I'
+Wants=set_wallpaper@%i.timer
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nitrogen --head=%i --set-zoom-fill --random /home/elomatreb/Pictures/Wallpaper/%i
+
+[Install]
+WantedBy=window-manager.target

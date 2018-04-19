@@ -1,6 +1,0 @@
-[Unit]
-Description=Change the wallpapers every 10 minutes
-
-[Timer]
-OnUnitActiveSec=10m
-Unit=set_wallpapers.service
