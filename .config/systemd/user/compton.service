@@ -1,0 +1,8 @@
+[Unit]
+Description=Compton X compositor
+
+[Service]
+ExecStart=/usr/bin/compton
+
+[Install]
+WantedBy=window-manager.target
