@@ -2,16 +2,42 @@
 
 # Crude power management/locking utility script
 
+FONT="Fantasque Sans Mono"
+
+COLOR_RED="bd2c40"
+COLOR_BLUE="0e407b"
+COLOR_GREEN="16a04f"
+
+export MPD_HOST=/run/user/1000/mpd
+
 set -e
 
 case "$1" in
 	lock)
 		sc=$(mktemp -u).png
-		mopidy-cli pause &
+		mpc pause
 		maim $sc
 		# Pixelate screenshot
 		convert $sc -scale 10% -scale 1000% $sc
-		i3lock -i $sc -e --statusfont="Fantasque Sans Mono" --insidecolor=00000066 --line-uses-inside --ringcolor=00000088 --keyhlcolor=16a04f88 --separatorcolor=00000000 --ringwrongcolor=bd2c40ff --insidewrongcolor=bd2c4066 --ringvercolor=0e407bff --insidevercolor=0e407b66 --textcolor=ffffffaa --veriftext=... --wrongtext=nope --radius 120 --bshlcolor=bd2c40ff
+		i3lock -i $sc -f -e \
+			--composite \
+			--verif-font='$FONT' \
+			--wrong-font='$FONT' \
+			--insidecolor=00000066 \
+			--insidevercolor=$COLOR_BLUE"66" \
+			--insidewrongcolor=$COLOR_RED"66" \
+			--line-uses-inside \
+			--keyhlcolor=$COLOR_GREEN"88" \
+			--separatorcolor=00000000 \
+			--ringcolor=00000088 \
+			--ringvercolor=$COLOR_BLUE"ff" \
+			--ringwrongcolor=$COLOR_RED"ff" \
+			--verifcolor=ffffffaa \
+			--wrongcolor=ffffffaa \
+			--veriftext="" \
+			--wrongtext="" \
+			--radius 120 \
+			--bshlcolor=$COLOR_RED"ff"
 		rm $sc
 		;;
 	suspend)
